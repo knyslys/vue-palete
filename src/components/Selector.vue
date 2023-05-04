@@ -1,6 +1,8 @@
 <template>
   <section class="section-selector min-h-screen flex items-center">
-    <div class="color-selector container max-w-md mx-auto flex justify-center">
+    <div
+      class="color-selector container max-w-md mx-auto flex justify-center relative"
+    >
       <div
         class="flex flex-col justify-center items-center gap-2 color-wrapper"
       >
@@ -77,11 +79,12 @@
         ></lock-color>
       </div>
       <button
-        class="rounded bg-cyan-400 p-4 font-bold hover:bg-cyan-500 hover:text-slate-600 hover:rounded-full duration-1000 transition-all"
+        class="rounded bg-cyan-400 p-3 font-bold hover:bg-cyan-500 hover:text-slate-800 hover:rounded-full duration-1000 transition-all shadow-md hover:shadow-lg"
         @click="sendRequest"
       >
         Generate
       </button>
+      <img src="fetching.gif" alt="loading" v-if="fetching" />
     </div>
   </section>
 </template>
@@ -89,12 +92,13 @@
 <script setup>
 import { useColor } from "../stores/colors";
 import { Icon } from "@iconify/vue";
+import { ref } from "vue";
 import LockColor from "./LockColor.vue";
 import rgbHex from "rgb-hex";
 import hexRgb from "hex-rgb";
 
 const colorStore = useColor();
-
+const fetching = ref(undefined);
 const convertToHex = (rgb) => {
   return rgbHex(rgb[0], rgb[1], rgb[2]);
 };
@@ -105,6 +109,7 @@ const convertToRgb = (hex) => {
 };
 
 const sendRequest = async () => {
+  fetching.value = true;
   const c1 =
     colorStore.colors[0].locked === false
       ? "N"
@@ -126,19 +131,24 @@ const sendRequest = async () => {
       ? "N"
       : convertToRgb(colorStore.colors[4].value);
 
-  const request = await fetch("http://colormind.io/api/", {
-    method: "POST",
-    body: JSON.stringify({
-      model: "default",
-      input: [c1, c2, c3, c4, c5],
-    }),
-  });
-  const response = await request.json();
-  colorStore.colors[0].value = "#" + convertToHex(response.result[0]);
-  colorStore.colors[1].value = "#" + convertToHex(response.result[1]);
-  colorStore.colors[2].value = "#" + convertToHex(response.result[2]);
-  colorStore.colors[3].value = "#" + convertToHex(response.result[3]);
-  colorStore.colors[4].value = "#" + convertToHex(response.result[4]);
+  try {
+    const request = await fetch("http://colormind.io/api/", {
+      method: "POST",
+      body: JSON.stringify({
+        model: "default",
+        input: [c1, c2, c3, c4, c5],
+      }),
+    });
+    const response = await request.json();
+    colorStore.colors[0].value = "#" + convertToHex(response.result[0]);
+    colorStore.colors[1].value = "#" + convertToHex(response.result[1]);
+    colorStore.colors[2].value = "#" + convertToHex(response.result[2]);
+    colorStore.colors[3].value = "#" + convertToHex(response.result[3]);
+    colorStore.colors[4].value = "#" + convertToHex(response.result[4]);
+  } catch (e) {
+  } finally {
+    fetching.value = false;
+  }
 };
 sendRequest();
 
@@ -149,6 +159,13 @@ const test = (e) => {
 </script>
 
 <style scoped>
+img {
+  position: absolute;
+  top: -33%;
+
+  right: -15%;
+  width: clamp(2.5rem, 5rem, 7.5rem);
+}
 .icon {
   position: absolute;
   top: -15%;

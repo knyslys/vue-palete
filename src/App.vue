@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import Selector from "./components/Selector.vue";
+import Introduction from "./components/Introduction.vue";
 </script>
 
 <template>
@@ -11,6 +12,20 @@ import Selector from "./components/Selector.vue";
     Hello
   </div> -->
   <selector></selector>
+  <introduction></introduction>
 </template>
 
-<style scoped></style>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+</style>
