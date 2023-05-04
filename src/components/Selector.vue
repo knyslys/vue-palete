@@ -1,48 +1,87 @@
 <template>
   <section class="section-selector min-h-screen flex items-center">
     <div class="color-selector container max-w-md mx-auto flex justify-center">
-      <div class="flex flex-col justify-center items-center gap-2">
+      <div
+        class="flex flex-col justify-center items-center gap-2 color-wrapper"
+      >
         <color-picker
           v-model:pureColor="colorStore.colors[0].value"
           shape="circle"
           :disableAlpha="true"
           :disableHistory="true"
+          format="hex"
         />
-        <Icon icon="material-symbols:lock-sharp" class="icon" />
+        <lock-color
+          :locked="colorStore.colors[0].locked"
+          @click="colorStore.setLock(0)"
+        ></lock-color>
       </div>
-      <div class="flex flex-col justify-center items-center gap-2">
+      <div
+        class="flex flex-col justify-center items-center gap-2 color-wrapper"
+      >
         <color-picker
           v-model:pureColor="colorStore.colors[1].value"
           shape="circle"
           :disableAlpha="true"
           :disableHistory="true"
+          format="hex"
         />
-        <Icon icon="material-symbols:lock-sharp" class="icon" />
+        <lock-color
+          :locked="colorStore.colors[1].locked"
+          @click="colorStore.setLock(1)"
+        ></lock-color>
       </div>
-      <div class="flex flex-col justify-center items-center gap-2">
+      <div
+        class="flex flex-col justify-center items-center gap-2 color-wrapper"
+      >
         <color-picker
           v-model:pureColor="colorStore.colors[2].value"
           shape="circle"
           :disableAlpha="true"
           :disableHistory="true"
+          format="hex"
         />
-        <Icon icon="material-symbols:lock-sharp" class="icon" />
+        <lock-color
+          :locked="colorStore.colors[2].locked"
+          @click="colorStore.setLock(2)"
+        ></lock-color>
       </div>
-      <div class="flex flex-col justify-center items-center gap-2">
+      <div
+        class="flex flex-col justify-center items-center gap-2 color-wrapper"
+      >
         <color-picker
           v-model:pureColor="colorStore.colors[3].value"
           shape="circle"
           :disableAlpha="true"
           :disableHistory="true"
+          format="hex"
         />
-        <Icon icon="material-symbols:lock-sharp" class="icon" />
+        <lock-color
+          :locked="colorStore.colors[3].locked"
+          @click="colorStore.setLock(3)"
+        ></lock-color>
       </div>
-      <color-picker
-        v-model:pureColor="colorStore.colors[4].value"
-        shape="circle"
-        :disableAlpha="true"
-        :disableHistory="true"
-      />
+      <div
+        class="flex flex-col justify-center items-center gap-2 color-wrapper"
+      >
+        <color-picker
+          v-model:pureColor="colorStore.colors[4].value"
+          shape="circle"
+          :disableAlpha="true"
+          :disableHistory="true"
+          format="hex"
+        />
+        <lock-color
+          :locked="colorStore.colors[4].locked"
+          @click="colorStore.setLock(4)"
+        ></lock-color>
+      </div>
+      <button
+        class="rounded bg-cyan-400 p-4 font-bold hover:bg-cyan-500 hover:text-slate-600 hover:rounded-full duration-1000 transition-all"
+        @click="sendRequest"
+      >
+        Generate
+      </button>
     </div>
   </section>
 </template>
@@ -50,6 +89,7 @@
 <script setup>
 import { useColor } from "../stores/colors";
 import { Icon } from "@iconify/vue";
+import LockColor from "./LockColor.vue";
 import rgbHex from "rgb-hex";
 import hexRgb from "hex-rgb";
 
@@ -101,6 +141,32 @@ const sendRequest = async () => {
   colorStore.colors[4].value = "#" + convertToHex(response.result[4]);
 };
 sendRequest();
+
+const test = (e) => {
+  // console.log(convertToRgb(e));
+  console.log(e);
+};
 </script>
 
-<style scoped></style>
+<style scoped>
+.icon {
+  position: absolute;
+  top: -15%;
+  left: 50%;
+  transform: translateX(-100%);
+  font-size: 1.6rem;
+  background-color: #fff;
+  border: 1px solid #000;
+  padding: 0.2rem;
+  border-radius: 500%;
+  cursor: pointer;
+}
+
+.color-wrapper {
+  position: relative;
+}
+
+.current-color {
+  transform: scale(2) !important;
+}
+</style>

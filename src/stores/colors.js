@@ -6,7 +6,7 @@ export const useColor = defineStore("colors", () => {
     {
       id: "c1",
       value: "#000",
-      locked: true,
+      locked: false,
     },
     {
       id: "c2",
@@ -30,5 +30,10 @@ export const useColor = defineStore("colors", () => {
     },
   ]);
 
-  return { colors };
+  const setLock = (index) => {
+    // colors[index].locked = true;
+    console.log(colors.value[4].value);
+    colors.value[index].locked = !colors.value[index].locked;
+  };
+  return { colors, setLock };
 });
