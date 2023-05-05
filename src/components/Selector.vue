@@ -1,7 +1,7 @@
 <template>
   <section class="section-selector min-h-screen flex items-center">
     <div
-      class="color-selector container max-w-md mx-auto flex justify-center relative"
+      class="color-selector container max-w-md mx-auto flex justify-center relative flex-wrap"
     >
       <div
         class="flex flex-col justify-center items-center gap-2 color-wrapper"
@@ -84,7 +84,7 @@
       >
         Generate
       </button>
-      <img src="fetching.gif" alt="loading" v-if="fetching" />
+      <img src="/images/fetching.gif" alt="loading" v-if="fetching" />
     </div>
   </section>
 </template>
@@ -146,6 +146,7 @@ const sendRequest = async () => {
     colorStore.colors[3].value = "#" + convertToHex(response.result[3]);
     colorStore.colors[4].value = "#" + convertToHex(response.result[4]);
   } catch (e) {
+    console.log(e);
   } finally {
     fetching.value = false;
   }
@@ -177,6 +178,7 @@ img {
   padding: 0.2rem;
   border-radius: 500%;
   cursor: pointer;
+  color: #000;
 }
 
 .color-wrapper {

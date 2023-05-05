@@ -1,9 +1,4 @@
 <template>
-  <!-- loader  -->
-  <div class="loader_bg">
-    <div class="loader"><img src="images/loading.gif" alt="#" /></div>
-  </div>
-  <!-- end loader -->
   <!-- header -->
   <header>
     <!-- header inner -->
@@ -108,7 +103,7 @@
                       <div class="col-md-12 col-lg-5">
                         <div class="text_img">
                           <figure>
-                            <img src="images/ban_img.png" alt="#" />
+                            <img src="/images/ban_img.png" alt="#" />
                           </figure>
                         </div>
                       </div>
@@ -129,7 +124,7 @@
       <div class="row d_flex">
         <div class="col-md-12 col-lg-5">
           <div class="about_img">
-            <figure><img src="images/about.png" alt="#" /></figure>
+            <figure><img src="/images/about.png" alt="#" /></figure>
           </div>
         </div>
         <div class="col-md-12 col-lg-7">
@@ -172,8 +167,8 @@
         </div>
         <div class="col-md-3 col-sm-6">
           <div id="ho_color" class="services_main">
-            <i><img src="images/services_icon1.png" alt="#" /></i>
-            <img class="ho" src="images/services_icon1h.png" alt="#" />
+            <i><img src="/images/services_icon1.png" alt="#" /></i>
+            <img class="ho" src="/images/services_icon1h.png" alt="#" />
             <h3>Safe & Secure</h3>
             <p>ncididunt ut labore et dolore magna aliqua. Ut enim</p>
             <a class="read_more" href="#">Read More</a>
@@ -181,8 +176,8 @@
         </div>
         <div class="col-md-3 col-sm-6">
           <div id="ho_color" class="services_main">
-            <i><img src="images/services_icon2.png" alt="#" /></i>
-            <img class="ho" src="images/services_icon2h.png" alt="#" />
+            <i><img src="/images/services_icon2.png" alt="#" /></i>
+            <img class="ho" src="/images/services_icon2h.png" alt="#" />
             <h3>Mobile Apps</h3>
             <p>ncididunt ut labore et dolore magna aliqua. Ut enim</p>
             <a class="read_more" href="#">Read More</a>
@@ -190,8 +185,8 @@
         </div>
         <div class="col-md-3 col-sm-6">
           <div id="ho_color" class="services_main">
-            <i><img src="images/services_icon3.png" alt="#" /></i>
-            <img class="ho" src="images/services_icon3h.png" alt="#" />
+            <i><img src="/images/services_icon3.png" alt="#" /></i>
+            <img class="ho" src="/images/services_icon3h.png" alt="#" />
             <h3>Wallet</h3>
             <p>ncididunt ut labore et dolore magna aliqua. Ut enim</p>
             <a class="read_more" href="#">Read More</a>
@@ -199,8 +194,8 @@
         </div>
         <div class="col-md-3 col-sm-6">
           <div id="ho_color" class="services_main">
-            <i><img src="images/services_icon4.png" alt="#" /></i>
-            <img class="ho" src="images/services_icon4h.png" alt="#" />
+            <i><img src="/images/services_icon4.png" alt="#" /></i>
+            <img class="ho" src="/images/services_icon4h.png" alt="#" />
             <h3>Experts Support</h3>
             <p>ncididunt ut labore et dolore magna aliqua. Ut enim</p>
             <a class="read_more" href="#">Read More</a>

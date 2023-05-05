@@ -1,5 +1,5 @@
 <template>
-  <section class="section-intro bg-slate-300 p-8">
+  <section class="section-intro bg-slate-400 p-8 border border-cyan-400">
     <div class="mx-auto flex gap-4 justify-center flex-wrap">
       <!-- c1 -->
       <div class="flex flex-col text-center gap-y-2 max-w-xs">
