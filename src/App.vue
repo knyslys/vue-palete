@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from "vue-router";
 import Selector from "./components/Selector.vue";
 import Introduction from "./components/Introduction.vue";
+import Website from "./components/Website.vue";
 </script>
 
 <template>
@@ -13,6 +14,7 @@ import Introduction from "./components/Introduction.vue";
   </div> -->
   <selector></selector>
   <introduction></introduction>
+  <website></website>
 </template>
 
 <style>
